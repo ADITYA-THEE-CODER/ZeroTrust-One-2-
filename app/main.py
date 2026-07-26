@@ -1,15 +1,16 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from pydantic import BaseModel
 from app.core.ai_engine import run_unified_scanner
 
 app = FastAPI(
-    title="ZeroTrust One Defense Platform API",
+    title="ZeroTrust One Platform API",
     version="3.0.0",
-    description="Unified Cyber Defense API engine with server-side Multi-LLM consensus."
+    description="Unified Zero Trust Cyber Defense Platform API"
 )
 
-# CORS setup to allow access from local tests, web apps, and Chrome Extensions
+# Enable CORS for browser extensions and external web dashboards
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,7 +20,7 @@ app.add_middleware(
 )
 
 class ScanRequest(BaseModel):
-    scan_type: str  # e.g., "email", "url", "text", "file_metadata"
+    scan_type: str
     content: str
 
 @app.get("/")
@@ -30,6 +31,10 @@ def health_check():
         "version": "3.0.0",
         "engine": "Unified Multi-LLM Defense Active"
     }
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return Response(content=b"", media_type="image/x-icon")
 
 @app.post("/api/v1/scan")
 async def scan_payload(payload: ScanRequest):
