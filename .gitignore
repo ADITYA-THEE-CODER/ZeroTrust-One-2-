@@ -1,0 +1,13 @@
+# Ignore environment secrets
+.env
+.env.local
+
+# Python cache & virtual environments
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# IDE settings
+.vscode/
+.idea/
