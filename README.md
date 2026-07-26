@@ -1,10 +1,9 @@
-# ZeroTrust One - Defense Platform API
+# ZeroTrust One - Defense Platform Backend
 
-An enterprise-grade AI cybersecurity engine powered by FastAPI and multi-LLM consensus.
+Unified Cybersecurity Defense Platform API powered by FastAPI and Multi-LLM Consensus logic.
 
-## Setup Instructions
+## GitHub & Render Deployment Setup
 
-1. Clone the repository:
+1. Copy `.env.example` to `.env` locally and add your keys:
    ```bash
-   git clone <your-repo-url>
-   cd zerotrust-backend
+   cp .env.example .env
